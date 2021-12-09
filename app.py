@@ -9,7 +9,50 @@ import requests
 import json
 from sys import exit
 import paramiko
+
+def GetToken(Host, UserName, Password):
+    url = "https://" + Host + "/api/v2/api-token-auth/"
+    # print("url=", url)
+    payload = json.dumps({
+        "username": UserName,
+        "password": Password
+    })
+    headers = {
+        'Content-Type': 'application/json'
+    }
+
+    response = requests.request("POST", url, verify=False, headers=headers, data=payload)
+    if response.status_code == 200:
+        return response
+    else:
+        status=400
+        return status
+
+def GetResourceHandler(Host,Token):
+    url = "https://" + Host + "/api/v2/environments/?attributes=name,id,resource_handler"
+    payload = {}
+    headers = Token
+    response = requests.request("GET", url, verify=False, headers=headers, data=payload)
+    if response.status_code ==200:
+        return response
+    else:
+        status=400
+        return status
+
+def GetDetails(Host,Href,Token):
+    # url="https://"+Host+"/api/v2/environments/ENV-g6po3ric/"
+    url = "https://" + Host + Href
+    payload = {}
+    header = Token
+    response1 = requests.request("GET", url,verify=False, headers=header, data=payload)
+    if response1.status_code == 200:
+        return response1
+    else:
+        status = 400
+        return status
 app = Flask(__name__)
+
+
 
 @app.route("/")
 def hello():
