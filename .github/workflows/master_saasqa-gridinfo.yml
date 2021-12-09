@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'saasqa-gridinfo'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_10A5D2B75EAB4CF0BB7B446F150AC45C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1A6C07CFE0CF411486B97A5B0441C2F9 }}
