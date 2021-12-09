@@ -62,7 +62,7 @@ def hello():
 def ssh2():
     FarmName='tprj042'
     subscription_name = 'Lightning Sandbox'
-    Host = '172.17.8.4'
+    Host = '40.91.90.241'
     UserName = 'svc-odcdevops'
     Password = 'Iltwas!23'
     tok = GetToken(Host, UserName, Password)
